@@ -1,6 +1,6 @@
 const Notification = require('../model/notification');
 const Dojo = require("../model/Dojo")
-const Master = require('../model/Master')
+const Master = require('../model/master')
 
 
 exports.addNotification= async (req, res) => {

@@ -1,5 +1,5 @@
 const Student = require('../model/Student')
-const Master = require('../model/Master')
+const Master = require('../model/master')
 const Dojo = require('../model/Dojo')
 const upload = require("../config/multerConfig");
 

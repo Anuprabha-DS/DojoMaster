@@ -1,5 +1,5 @@
 const Attendance = require('../model/Attendance')
-const Master = require('../model/Master')
+const Master = require('../model/master')
 const Dojo = require('../model/Dojo')
 const Student = require('../model/Student')
 

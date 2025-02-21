@@ -1,4 +1,4 @@
-const Master = require('../model/Master')
+const Master = require('../model/master')
 const Dojo = require('../model/Dojo')
 const User = require('../model/user')
 const upload = require("../config/multerConfig");
