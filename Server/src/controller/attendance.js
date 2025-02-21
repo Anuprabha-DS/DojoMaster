@@ -1,7 +1,7 @@
-const Attendance = require('../model/Attendance')
+const Attendance = require('../model/attendance')
 const Master = require('../model/master')
-const Dojo = require('../model/Dojo')
-const Student = require('../model/Student')
+const Dojo = require('../model/dojo')
+const Student = require('../model/student')
 
 
 exports.Attendance = async(req,res)=>{

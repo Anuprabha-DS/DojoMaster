@@ -1,8 +1,7 @@
-// controllers/authController.js
-// const User = require('../model/user');
+
 const User = require('../model/user')
 const Master = require('../model/master');
-const Student = require('../model/Student');
+const Student = require('../model/student');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 

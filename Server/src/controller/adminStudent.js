@@ -1,37 +1,4 @@
-const Student = require('../model/Student')
-// const Master = require('../model/Master')
-// const Dojo = require('../model/Dojo')
-
-// exports.getStudents = async (req, res) => {
-//     try {
-//         const students = await Student.aggregate([
-//             { 
-//                 $match: {active: true }
-//             },
-//             {
-//                 $addFields: {
-//                     age: {
-//                         $dateDiff: {
-//                             startDate: "$dateOfBirth",
-//                             endDate: new Date(),
-//                             unit: "year"
-//                         }
-//                     }
-//                 }
-//             }
-//         ]);
-
-//         if (students.length === 0) {
-//             return res.status(404).json({ message: 'No students found.' });
-//         }
-
-//         res.status(200).json({ success: true,
-//             data: students,
-//             message: 'Students retrieved successfully.' });
-//     } catch (error) {
-//         res.status(500).json({ message: error.message });
-//     }
-// };
+const Student = require('../model/student')
 
 
 exports.getStudents = async (req, res) => {

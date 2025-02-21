@@ -1,6 +1,6 @@
-const Student = require('../model/Student')
+const Student = require('../model/student')
 const Master = require('../model/master')
-const Dojo = require('../model/Dojo')
+const Dojo = require('../model/dojo')
 const upload = require("../config/multerConfig");
 
 

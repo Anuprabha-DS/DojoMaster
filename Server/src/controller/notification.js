@@ -1,5 +1,5 @@
 const Notification = require('../model/notification');
-const Dojo = require("../model/Dojo")
+const Dojo = require("../model/dojo")
 const Master = require('../model/master')
 
 

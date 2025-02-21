@@ -1,4 +1,4 @@
-const Dojo = require('../model/Dojo')
+const Dojo = require('../model/dojo')
 
 exports.createDojo = async(req,res)=>{
     try{
