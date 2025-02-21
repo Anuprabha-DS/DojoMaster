@@ -1,0 +1,135 @@
+
+
+// // middleware/auth.js
+const jwt = require('jsonwebtoken');
+const User = require('../model/user');
+
+// const auth = async (req, res, next) => {
+//         try {
+          
+//         const token = req.header('Authorization').replace('Bearer ', '');
+//         // if(!token){
+//         //     return res.status(401).json({message:'Access denied. No token provided'})}  
+//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        
+//         const user = await User.findOne({ _id: decoded._id, active: true });
+
+//         if (!user) {
+           
+//             throw new Error();
+//         }
+        
+//         // Update last login
+//         user.lastLogin = new Date();
+//         await user.save();
+
+//         req.token = token;
+//         req.user = user;
+//         next();
+//     } catch (error) {
+//         res.status(401).send({ error: 'Please authenticate...' });
+//     }
+// };
+
+// // Role-based authentication middleware
+// const authorize = (...roles) => {
+//     return (req, res, next) => {
+//         if (!roles.includes(req.user.role)) {
+//             return res.status(403).json({ 
+//                 error: 'You do not have permission to perform this action' 
+//             });
+//         }
+//         next();
+//     };
+// };
+
+// module.exports = { auth, authorize };
+
+const auth = async (req, res, next) => {
+    if (!req.header('Authorization')) {
+        return res.status(401).json({ error: 'Authorization header missing' });
+    }
+
+    const token = req.header('Authorization').replace('Bearer ', '');
+    try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    
+    const user = await User.findOne({ _id: decoded._id, active: true });
+
+    if (!user) {
+       
+        throw new Error();
+    }
+    user.lastLogin = new Date();
+    await user.save();
+    req.token = token;
+    req.user = user;
+    next();
+} catch (error) {
+    if (error.message === 'jwt expired') {
+        return res.status(401).json({ error: 'Token has expired, please login again' });
+    }
+    return res.status(401).json({ error: 'Please authenticate.' });
+}
+};
+
+// Role-based authentication middleware
+const authorize = (...roles) => {
+return (req, res, next) => {
+    if (!roles.includes(req.user.role)) {
+        return res.status(403).json({ 
+            error: 'You do not have permission to perform this action' 
+        });
+    }
+    next();
+};
+};
+
+module.exports = { auth, authorize };
+
+
+
+// const jwt = require('jsonwebtoken');
+// const User = require('../model/user');
+
+// const auth = async (req, res, next) => {
+//     try {
+//         const authHeader = req.header('Authorization');
+//         if (!authHeader) {
+//             console.error('Authorization header is missing.');
+//             return res.status(401).send({ error: 'Authorization header is missing.' });
+//         }
+
+//         if (!authHeader.startsWith('Bearer ')) {
+//             console.error('Authorization header is malformed.');
+//             return res.status(401).send({ error: 'Authorization header is malformed.' });
+//         }
+
+//         const token = authHeader.replace('Bearer ', '');
+//         console.log('Token received:', token);
+
+//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
+//         console.log('Decoded JWT:', decoded);
+
+//         const user = await User.findOne({ _id: decoded._id, active: true });
+//         if (!user) {
+//             console.error('User not found or inactive.');
+//             return res.status(401).send({ error: 'User not found or inactive.' });
+//         }
+
+//         // Update last login
+//         user.lastLogin = new Date();
+//         await user.save();
+
+//         console.log('User authenticated:', user._id);
+//         req.token = token;
+//         req.user = user;
+//         next();
+//     } catch (error) {
+//         console.error('Authentication Error:', error.message);
+//         res.status(401).send({ error: 'Invalid token or authentication failed.' });
+//     }
+// };
+
+// module.exports = { auth };
+
