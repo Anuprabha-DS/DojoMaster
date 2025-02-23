@@ -17,14 +17,20 @@ const masterRoutes = require('./src/routes/masterRoutes')
 
 const app = express()
 
-app.use(
-    cors({
-        origin: "https://testfrontend-chi.vercel.app/", // Allow only frontend origin
-        credentials: true, // Allow cookies and credentials
-        methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed methods
-        allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-    })
-);
+app.use(cors({
+    origin: "*", // Allow all domains (for testing only)
+    methods: "GET,POST,PUT,DELETE,PATCH",
+    allowedHeaders: "Content-Type,Authorization"
+}));
+
+// app.use(
+//     cors({
+//         origin: "https://testfrontend-chi.vercel.app/", // Allow only frontend origin
+//         credentials: true, // Allow cookies and credentials
+//         methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], // Allowed methods
+//         allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+//     })
+// );
 // app.use(cors())
 app.use(express.json())
 // app.use(cookieParser())
