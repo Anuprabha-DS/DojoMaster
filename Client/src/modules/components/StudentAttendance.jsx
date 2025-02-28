@@ -107,7 +107,7 @@ const StudentAttendance = () => {
           </tbody>
         </table>
       ) : (
-        <p>No attendance records found.</p>
+        <p>Loading .....</p>
       )}
 
       {/* Back Button */}

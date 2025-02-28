@@ -125,6 +125,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Login.css"; 
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -137,7 +138,7 @@ const Login = () => {
     e.preventDefault();
 
     if (!email || !password) {
-      setError("Please fill in both fields");
+      setError("Please fill in both fields.");
       return;
     }
 
@@ -154,28 +155,32 @@ const Login = () => {
       const data = await response.json();
 
       if (response.status === 200) {
-        localStorage.setItem("authToken", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
+        if (data.requirePasswordChange) {
+          localStorage.setItem("authToken", data.token);
+          navigate("/change-password");
+        } else {
+          localStorage.setItem("authToken", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
 
-        // Redirect based on role
-        switch (data.user.role) {
-          case "Admin":
-            navigate("/admin-dashboard");
-            break;
-          case "Master":
-            navigate("/master-dashboard");
-            break;
-          case "Parent":
-            navigate("/parent-dashboard");
-            break;
-          default:
-            navigate("/home");
+          switch (data.user.role) {
+            case "Admin":
+              navigate("/admin-dashboard");
+              break;
+            case "Master":
+              navigate("/master-dashboard");
+              break;
+            case "Parent":
+              navigate("/parent-dashboard");
+              break;
+            default:
+              navigate("/home");
+          }
         }
       } else {
-        setError(data.error || "Invalid credentials");
+        setError(data.error || "Invalid credentials.");
       }
     } catch (error) {
-      setError("An error occurred while logging in");
+      setError("An error occurred while logging in.");
       console.error(error);
     } finally {
       setIsLoading(false);
@@ -183,45 +188,41 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-96">
-        <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+    <div className="login-container">
+      <div className="login-card">
+        <h2>Login</h2>
 
-        {error && <div className="text-red-600 text-center mb-4">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-600 font-medium">Email:</label>
+          <div className="input-group">
+            <label>Email:</label>
             <input
-              type="text"
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-600 font-medium">Password:</label>
+          <div className="input-group">
+            <label>Password:</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 disabled:bg-gray-400"
-          >
+          <button type="submit" disabled={isLoading} className="login-button">
             {isLoading ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        <p className="text-center mt-4 text-gray-600">
-          Donot have an account?{" "}
-          <button className="text-blue-600 hover:underline" onClick={() => navigate("/register")}>
+        <p>
+          Do not have an account?{" "}
+          <button className="link-button" onClick={() => navigate("/register")}>
             Register
           </button>
         </p>

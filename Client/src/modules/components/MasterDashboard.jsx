@@ -117,7 +117,6 @@ const MasterDashboard = () => {
   return (
     <div>
       <h2>Master Dashboard</h2>
-      {loading && <p>Loading...</p>}
 
       {/* Navigation Buttons */}
       <div>
@@ -130,6 +129,8 @@ const MasterDashboard = () => {
       <div>
         
         <h3>Students</h3>
+        {loading && <p>Loading...</p>}
+
         {error && <p style={{ color: "red" }}>{error}</p>}
         {students.length > 0 ? (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "16px" }}>
@@ -172,7 +173,7 @@ const MasterDashboard = () => {
             
           </div>
         ) : (
-          <p>No students found.</p>
+          !loading && <p>No students found.</p>
         )}
       </div>
 
