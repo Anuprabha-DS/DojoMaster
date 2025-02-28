@@ -75,9 +75,9 @@
 
 // export default Register;
 
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./Register.css"; // Import the CSS file
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -122,64 +122,54 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-xl shadow-md w-96">
-        <h2 className="text-2xl font-semibold text-center mb-6">Register</h2>
+    <div className="register-container">
+      <div className="register-card">
+        <h2>Register</h2>
 
-        {error && <div className="text-red-600 text-center mb-4">{error}</div>}
+        {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleRegister}>
-          <div className="mb-4">
-            <label className="block text-gray-600 font-medium">Email:</label>
+          <div className="input-group">
+            <label>Email:</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-600 font-medium">Password:</label>
+          <div className="input-group">
+            <label>Password:</label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              required
             />
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-600 font-medium">Role:</label>
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-              className="w-full p-2 border rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
-            >
+          <div className="input-group">
+            <label>Role:</label>
+            <select value={role} onChange={(e) => setRole(e.target.value)} required>
               <option value="">Select Role</option>
               <option value="Master">Master</option>
               <option value="Parent">Parent</option>
             </select>
           </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 disabled:bg-gray-400"
-          >
+          <button type="submit" disabled={isLoading} className="register-button">
             {isLoading ? "Registering..." : "Register"}
           </button>
         </form>
 
-        <p className="text-center mt-4 text-gray-600">
-          Already have an account?{" "}
-          <button className="text-blue-600 hover:underline" onClick={() => navigate("/")}>
-            Login
-          </button>
-        </p>
+        <button className="back-button" onClick={() => navigate("/")}>
+          Back to Login
+        </button>
       </div>
     </div>
   );
 };
 
 export default Register;
+
