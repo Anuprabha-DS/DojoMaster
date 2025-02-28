@@ -14,7 +14,6 @@ const FetchNotifications = () => {
             try {
                 const response = await fetch(`${import.meta.env.VITE_BASE_URL}/master/getNotification`, {
                     method: "GET",
-                    credentials: "include",
                     headers: {
                         "Authorization": `Bearer ${token}`,
                         "Content-Type": "application/json",
