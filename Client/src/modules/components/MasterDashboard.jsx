@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 const MasterDashboard = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
   const [students, setStudents] = useState([]);
   const [error, setError] = useState("");
   const [markedAttendance, setMarkedAttendance] = useState({});
@@ -28,6 +30,8 @@ const MasterDashboard = () => {
       } catch (err) {
         setError("Error fetching students.");
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -113,6 +117,7 @@ const MasterDashboard = () => {
   return (
     <div>
       <h2>Master Dashboard</h2>
+      {loading && <p>Loading...</p>}
 
       {/* Navigation Buttons */}
       <div>
@@ -123,6 +128,7 @@ const MasterDashboard = () => {
 
       {/* Student List */}
       <div>
+        
         <h3>Students</h3>
         {error && <p style={{ color: "red" }}>{error}</p>}
         {students.length > 0 ? (
