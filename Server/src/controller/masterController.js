@@ -127,52 +127,6 @@ exports.viewMasterById = async(req,res)=>{
 }
 
 
-// exports.viewMaster = async(req,res)=>{
-//     try{
-//         const role = req.user.role;
-//         const adminId = req.user._id;  
-//         if (role !== "Admin") {
-//             return res.status(403).json({ message: 'Only admins have access to view dojo details.' });
-//         }
-//         const masters = await Master.find({createdBy: adminId,active:true})
-//         if (masters.length === 0){
-//             return res.status(404).json({message: 'No data found for this admin.' });
-//         }
-//         res.status(200).json({
-//             success: true,
-//             data: masters,
-//             message: 'Master retrieved successfully'
-//         });
-
-//     }catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// }
-
-
-// exports.viewMasterById = async(req,res)=>{
-//     try{
-//         const role = req.user.role;
-//         const adminId = req.user._id; 
-//         const Id =req.params.id
-//         if (role !== "Admin") {
-//             return res.status(403).json({ message: 'Only admins have access to view dojo details.' });
-//         }
-//         const master = await Master.findOne({ _id: Id,createdBy: adminId,active:true})
-//         if (!master){
-//             return res.status(404).json({message: 'No master found.' });
-//         }
-//         res.status(200).json({
-//             success: true,
-//             data: master,
-//             message: 'Master retrieved successfully'
-//         });
-
-//     }catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// }
-
 
 exports.updateMaster= async(req,res)=>{
     try{

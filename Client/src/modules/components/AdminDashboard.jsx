@@ -78,6 +78,8 @@ const AdminDashboard = () => {
         <button onClick={() => navigate("/add-master")}>Add Master</button>
         <button onClick={() => navigate("/students")}>View Students</button>
         <button onClick={() => navigate("/send-notification")}>Send Notification</button>
+        <button onClick={() => navigate("/notifications")}>View Notifications</button>
+
 
 
         <h3>Your Dojos</h3>

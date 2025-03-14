@@ -19,6 +19,7 @@ import MasterStudent from "./modules/components/MasterStudent"
 import CreateStudent from "./modules/components/CreateStudent"
 import FetchNotifications from "./modules/components/FetchNotification"
 import StudentAttendance from "./modules/components/StudentAttendance"
+import AdminNotification from "./modules/components/AdminNotification"
 
 function App() {
   return (
@@ -39,7 +40,9 @@ function App() {
           <Route path="/student/:id" element={<StudentDetails />} />
           <Route path="/filter-students" element={<FilterStudentsByDojo />} />
           <Route path="/send-notification" element={<SendNotification />} />
+          <Route path="/notifications" element={<AdminNotification/>} />
 
+          
           
 
 

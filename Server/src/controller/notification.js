@@ -44,6 +44,25 @@ exports.addNotification= async (req, res) => {
   }
 }
 
+exports.adminViewNotify = async(req,res)=>{
+  try{
+     const adminId = req.user._id
+     if (!adminId) {
+      return res.status(404).json({ message: 'Admin not not actvie'});
+     }
+     console.log(adminId);
+     
+     const notification = await Notification.find({createdBy:adminId, active:true }).sort({createdAt: -1})
+     res.status(200).json({
+      success: true,
+      data: notification
+    });
+
+  }catch (error) {
+    res.status(500).json({message: 'Error creating notification',error: error.message});
+  }
+}
+
     // const validRoles = ['Master', 'Parent'];
     // const areRolesValid = forRoles.every(role => validRoles.includes(role));
     // if (!areRolesValid) {
@@ -71,7 +90,7 @@ exports.viewNotification = async(req,res)=>{
             return res.status(404).json({ message: 'Assigned dojo does not exist or is inactive.' });
         }
     const notifications = await Notification.find({
-      $or: [{ dojoId: null }, { dojoId: masterData.assignedDojoId }],
+      $or: [{ dojoId: null }, { dojoId: masterData.assignedDojoId }, {active:true}],
       forRoles: { $in: ["Master"] } // Check if "Master" is in forRoles array
     }).sort({ createdAt: -1 }); // Sort by newest first
 

@@ -2,7 +2,7 @@ const express = require('express')
 const {createDojo,viewDojo,viewDojoById,updateDojo,deleteDojo, assignDojo } = require("../controller/dojoController")
 const {createMaster,viewMaster,viewMasterById,updateMaster,deleteMaster} = require('../controller/masterController')
 const {auth,authorize} = require('../middleware/userMiddleware')
-const { addNotification } = require('../controller/notification')
+const { addNotification,adminViewNotify } = require('../controller/notification')
 const {getStudents,getStudentById,filterStudByDojo,filtereStudentsAge} = require('../controller/adminStudent')
 const router = express.Router()
 
@@ -20,6 +20,8 @@ router.get('/getMaster/:id',auth,authorize('Admin'),viewMasterById);
 router.patch('/updateMaster/:id',auth,authorize('Admin'),updateMaster);
 router.delete('/deleteMaster/:id',auth,authorize('Admin'),deleteMaster);
 router.post('/addNotify', auth, authorize('Admin'),addNotification)
+router.get('/viewNotification', auth, authorize('Admin'),adminViewNotify)
+
 
 router.get('/viewStudents',auth,authorize('Admin'),getStudents)
 router.get('/viewStudent/:id',auth,authorize('Admin'),getStudentById)

@@ -35,6 +35,8 @@ const notificationSchema = new Schema({
     default: Date.now,
     required: true
   },
+  active: {type: Boolean,default: true},
+
   forRoles: [{
     type: String,
     required: true,
