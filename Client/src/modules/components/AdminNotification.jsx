@@ -8,7 +8,7 @@ const AdminNotification = () => {
     useEffect(() => {
         const fetchNotifications = async () => {
             try {
-                const token = localStorage.getItem("token"); 
+                const token = localStorage.getItem("authToken")
                 const response = await fetch(`${import.meta.env.VITE_BASE_URL}/admin/viewNotification`, {
                     method: "GET",
                     headers: {

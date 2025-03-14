@@ -19,8 +19,8 @@ router.get('/viewMasters',auth,authorize('Admin'),viewMaster);
 router.get('/getMaster/:id',auth,authorize('Admin'),viewMasterById);
 router.patch('/updateMaster/:id',auth,authorize('Admin'),updateMaster);
 router.delete('/deleteMaster/:id',auth,authorize('Admin'),deleteMaster);
-router.post('/addNotify', auth, authorize('Admin'),addNotification)
-router.get('/viewNotification', auth, authorize('Admin'),adminViewNotify)
+router.post('/addNotify',auth,authorize('Admin'),addNotification)
+router.get('/viewNotification',auth,authorize('Admin'),adminViewNotify)
 
 
 router.get('/viewStudents',auth,authorize('Admin'),getStudents)
