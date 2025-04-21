@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const AdminNotification = () => {
     const [notifications, setNotifications] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchNotifications = async () => {
@@ -47,20 +45,12 @@ const AdminNotification = () => {
                 <ul>
                     {notifications.map((notification) => (
                         <li key={notification._id}>
-                            
-                            <p><strong>Title:</strong> {notification.title}</p>
                             <p><strong>Message:</strong> {notification.message}</p>
-                            <p><strong>Type:</strong> {notification.type}</p>
-                            <p><strong>Dojo:</strong> {notification.dojoId}</p>
-                            {/* <p><strong>Type:</strong> {notification.type}</p> */}
-
                             <p><strong>Created At:</strong> {new Date(notification.createdAt).toLocaleString()}</p>
                         </li>
                     ))}
                 </ul>
             )}
-        <button onClick={() => navigate('/admin-dashboard')}>Back</button>
-
         </div>
     );
 };
