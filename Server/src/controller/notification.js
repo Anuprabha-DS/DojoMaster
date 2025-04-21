@@ -50,9 +50,8 @@ exports.adminViewNotify = async(req,res)=>{
      if (!adminId) {
       return res.status(404).json({ message: 'Admin not not actvie'});
      }
-     console.log(adminId);
      
-     const notification = await Notification.find({createdBy:adminId, active:true }).sort({createdAt: -1})
+     const notification = await Notification.find({createdBy:adminId, active:true }).populate('dojoId', 'name address').sort({title: -1})
      res.status(200).json({
       success: true,
       data: notification

@@ -5,6 +5,8 @@ const AdminDashboard = () => {
   const [dojos, setDojos] = useState([]);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
 
   const token = localStorage.getItem("authToken"); // Get auth token
 
@@ -29,6 +31,8 @@ const AdminDashboard = () => {
       } catch (err) {
         setError("Error fetching dojos");
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -83,6 +87,8 @@ const AdminDashboard = () => {
 
 
         <h3>Your Dojos</h3>
+        {loading && <p>Loading...</p>}
+
         {error && <p style={{ color: "red" }}>{error}</p>}
         {dojos.length > 0 ? (
           <ul>
@@ -100,7 +106,7 @@ const AdminDashboard = () => {
             ))}
           </ul>
         ) : (
-          <p>No dojos available.</p>
+          !loading && <p>No dojos available.</p>
         )}
       </div>
 
