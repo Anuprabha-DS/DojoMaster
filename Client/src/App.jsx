@@ -52,7 +52,7 @@ function App() {
           <Route path="/master-dashboard" element={<MasterDashboard />} />
           <Route path="/MasterStudent/:id" element={<MasterStudent />} />
           <Route path="/add-students" element={<CreateStudent />} />
-          <Route path="/notifications" element={<FetchNotifications />} />
+          <Route path="/master-notifications" element={<FetchNotifications />} />
           <Route path="/student-attendance" element={<StudentAttendance />} />
 
 

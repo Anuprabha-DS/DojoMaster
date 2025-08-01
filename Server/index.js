@@ -43,6 +43,5 @@ app.use('/admin',adminRoutes)
 app.use('/master',masterRoutes)
 
 PORT = process.env.PORT
-
 app.listen(PORT,()=>console.log(`Listening at ${PORT} `)
 )

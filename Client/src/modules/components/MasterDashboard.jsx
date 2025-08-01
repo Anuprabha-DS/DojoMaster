@@ -122,7 +122,7 @@ const MasterDashboard = () => {
       <div>
         <button onClick={() => navigate("/add-students")}>Add Students</button>
         <button onClick={() => navigate("/student-attendance")}>Student Attendance</button>
-        <button onClick={() => navigate("/notifications")}>View Notifications</button>
+        <button onClick={() => navigate("/master-notifications")}>View Notifications</button>
       </div>
 
       {/* Student List */}

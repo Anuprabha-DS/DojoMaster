@@ -45,6 +45,7 @@ const AdminNotification = () => {
                 <ul>
                     {notifications.map((notification) => (
                         <li key={notification._id}>
+                            <p><strong>Title:</strong> {notification.title}</p>
                             <p><strong>Message:</strong> {notification.message}</p>
                             <p><strong>Created At:</strong> {new Date(notification.createdAt).toLocaleString()}</p>
                         </li>
