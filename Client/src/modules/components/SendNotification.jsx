@@ -95,67 +95,56 @@ const SendNotification = () => {
   };
 
   return (
-    <div>
-      <h2>Send Notification</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
-      {success && <p style={{ color: "green" }}>{success}</p>}
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-        <br />
-
-        <label>Message:</label>
-        <textarea value={message} onChange={(e) => setMessage(e.target.value)} required />
-        <br />
-
-        <label>Type:</label>
-        <select value={type} onChange={(e) => setType(e.target.value)} required>
-          <option value="">Select one</option>
-          <option value="belt-test">Belt Test</option>
-          <option value="tournament">Tournament</option>
-          <option value="general">General</option>
-          <option value="fees">Fees</option>
-        </select>
-        <br />
-
-        <label>For Roles:</label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            value="Master"
-            checked={forRoles.includes("Master")}
-            onChange={() => handleRoleChange("Master")}
-          />
-          Master
-        </label>
-        <br />
-        <label>
-          <input
-            type="checkbox"
-            value="Parent"
-            checked={forRoles.includes("Parent")}
-            onChange={() => handleRoleChange("Parent")}
-          />
-          Parent
-        </label>
-        <br />
-
-        <label>Dojo (Optional):</label>
-        <select value={dojoId} onChange={(e) => setDojoId(e.target.value)}>
-          <option value="">System-wide</option>
-          {dojos.map((dojo) => (
-            <option key={dojo._id} value={dojo._id}>
-              {dojo.name} - {dojo.address.place}
-            </option>
-          ))}
-        </select>
-        <br />
-
-        <button type="submit">Send Notification</button>
-      </form>
-      <button onClick={() => navigate("/admin-dashboard")}>Back</button>
+    <div className="container">
+  <h2>Send Notification</h2>
+  {error && <p style={{ color: "red" }}>{error}</p>}
+  {success && <p style={{ color: "green" }}>{success}</p>}
+  
+  <form onSubmit={handleSubmit}>
+    <div className="label-input">
+      <label>Title:</label>
+      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
     </div>
+
+    <div className="label-input">
+      <label>Message:</label>
+      <textarea value={message} onChange={(e) => setMessage(e.target.value)} required />
+    </div>
+
+    <div className="label-input">
+      <label>Type:</label>
+      <select value={type} onChange={(e) => setType(e.target.value)} required>
+        <option value="">Select one</option>
+        <option value="belt-test">Belt Test</option>
+        <option value="tournament">Tournament</option>
+        <option value="general">General</option>
+        <option value="fees">Fees</option>
+      </select>
+    </div>
+
+    <div className="label-input">
+      <label>For Roles:</label>
+      <label><input type="checkbox" value="Master" checked={forRoles.includes("Master")} onChange={() => handleRoleChange("Master")} /> Master</label>
+      <label><input type="checkbox" value="Parent" checked={forRoles.includes("Parent")} onChange={() => handleRoleChange("Parent")} /> Parent</label>
+    </div>
+
+    <div className="label-input">
+      <label>Dojo (Optional):</label>
+      <select value={dojoId} onChange={(e) => setDojoId(e.target.value)}>
+        <option value="">System-wide</option>
+        {dojos.map((dojo) => (
+          <option key={dojo._id} value={dojo._id}>
+            {dojo.name} - {dojo.address.place}
+          </option>
+        ))}
+      </select>
+    </div>
+
+    <button className="button" type="submit">Send Notification</button>
+  </form>
+
+  <button className="button grey" onClick={() => navigate("/admin-dashboard")}>Back</button>
+</div>
   );
 };
 

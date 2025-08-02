@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './AddForm.css'; 
 // import { apiRequest } from '../utils/tokenUtils';
 
 const AddDojo = () => {
@@ -59,52 +60,96 @@ const AddDojo = () => {
     }
   };
 
-  return (
-    <div>
+//   return (
+//     <div>
+//       <div>
+//       <h2>Add Dojo</h2>
+//       <form onSubmit={handleSubmit}>
+//         <div>
+//           <label>Name:</label>
+//           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+//         </div>
+//         <div>
+//           <label>Place:</label>
+//           <input type="text" value={place} onChange={(e) => setPlace(e.target.value)} />
+//         </div>
+//         <div>
+//           <label>City:</label>
+//           <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+//         </div>
+//         <div>
+//           <label>State:</label>
+//           <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
+//         </div>
+//         <div>
+//           <label>Pincode:</label>
+//           <input type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} />
+//         </div>
+//         <div>
+//           <label>Phone:</label>
+//           <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+//         </div>
+//         <div>
+//           <label>Email:</label>
+//           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+//         </div>
+
+//         {error && <p style={{ color: 'red' }}>{error}</p>}
+
+//         <button type="submit" disabled={isLoading}>
+//           {isLoading ? 'Creating Dojo...' : 'Create Dojo'}
+//         </button>
+//       </form>
+//     </div>
+// <br />
+// <button onClick={() => navigate(`/admin-dashboard`)}>Back</button>
+
+//     </div>
+//   );
+
+return (
+  <div className="add-form-container">
+    <h2>Add Dojo</h2>
+    <form onSubmit={handleSubmit}>
       <div>
-      <h2>Add Dojo</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        </div>
-        <div>
-          <label>Place:</label>
-          <input type="text" value={place} onChange={(e) => setPlace(e.target.value)} />
-        </div>
-        <div>
-          <label>City:</label>
-          <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
-        </div>
-        <div>
-          <label>State:</label>
-          <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
-        </div>
-        <div>
-          <label>Pincode:</label>
-          <input type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} />
-        </div>
-        <div>
-          <label>Phone:</label>
-          <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        </div>
-        <div>
-          <label>Email:</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </div>
+        <label>Name:</label>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+      </div>
+      <div>
+        <label>Place:</label>
+        <input type="text" value={place} onChange={(e) => setPlace(e.target.value)} />
+      </div>
+      <div>
+        <label>City:</label>
+        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+      </div>
+      <div>
+        <label>State:</label>
+        <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
+      </div>
+      <div>
+        <label>Pincode:</label>
+        <input type="text" value={pincode} onChange={(e) => setPincode(e.target.value)} />
+      </div>
+      <div>
+        <label>Phone:</label>
+        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      </div>
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p>{error}</p>}
 
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Creating Dojo...' : 'Create Dojo'}
-        </button>
-      </form>
-    </div>
-<br />
-<button onClick={() => navigate(`/admin-dashboard`)}>Back</button>
-
-    </div>
-  );
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? 'Creating Dojo...' : 'Create Dojo'}
+      </button>
+    </form>
+    <br />
+    <button onClick={() => navigate('/admin-dashboard')}>Back</button>
+  </div>
+);
 };
 
 export default AddDojo;

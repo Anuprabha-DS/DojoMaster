@@ -37,22 +37,22 @@ const AdminNotification = () => {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div>
-            <h2>Admin Notifications</h2>
-            {notifications.length === 0 ? (
-                <p>No notifications found.</p>
-            ) : (
-                <ul>
-                    {notifications.map((notification) => (
-                        <li key={notification._id}>
-                            <p><strong>Title:</strong> {notification.title}</p>
-                            <p><strong>Message:</strong> {notification.message}</p>
-                            <p><strong>Created At:</strong> {new Date(notification.createdAt).toLocaleString()}</p>
-                        </li>
-                    ))}
-                </ul>
-            )}
+        <div className="container">
+  <h2>Admin Notifications</h2>
+  {notifications.length === 0 ? (
+    <p>No notifications found.</p>
+  ) : (
+    <div className="flex-wrap">
+      {notifications.map((notification) => (
+        <div key={notification._id} className="card">
+          <h4>{notification.title}</h4>
+          <p><strong>Message:</strong> {notification.message}</p>
+          <p><strong>Created At:</strong> {new Date(notification.createdAt).toLocaleString()}</p>
         </div>
+      ))}
+    </div>
+  )}
+</div>
     );
 };
 

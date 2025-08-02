@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import './AddForm.css'; 
 
 const AddMaster = () => {
   const [formData, setFormData] = useState({
@@ -103,35 +104,64 @@ const AddMaster = () => {
     }
   };
 
+  // return (
+  //   <div>
+  //     <h2>Add Master</h2>
+  //     {message && <p style={{ color: "red" }}>{message}</p>}
+  //     <form onSubmit={handleSubmit} encType="multipart/form-data">
+  //       <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required /> <br />
+  //       <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required /> <br />
+  //       <input type="text" name="number" placeholder="Contact Number" value={formData.number} onChange={handleChange} required /> <br />
+  //       <input type="text" name="beltColor" placeholder="Belt Color" value={formData.beltColor} onChange={handleChange} /> <br />
+  //       <input type="text" name="beltDegree" placeholder="Belt Degree" value={formData.beltDegree} onChange={handleChange} /> <br />
+
+  //       <select name="assignedDojoId" value={formData.assignedDojoId} onChange={handleChange} required>
+  //         <option value="">Select a Dojo</option>
+  //         {dojos.map((dojo) => (
+  //           <option key={dojo._id} value={dojo._id}>
+  //             {dojo.address.place}
+  //           </option>
+  //         ))}
+  //       </select> 
+  //       <br />
+
+  //       <input type="file" onChange={handleFileChange} accept="image/*" /> <br />
+
+  //       <button type="submit">Create Master</button>
+  //     </form>
+  //     <br />
+  //     <button onClick={() => navigate(`/admin-dashboard`)}>Back</button>
+  //   </div>
+  // );
+
   return (
-    <div>
-      <h2>Add Master</h2>
-      {message && <p style={{ color: "red" }}>{message}</p>}
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required /> <br />
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required /> <br />
-        <input type="text" name="number" placeholder="Contact Number" value={formData.number} onChange={handleChange} required /> <br />
-        <input type="text" name="beltColor" placeholder="Belt Color" value={formData.beltColor} onChange={handleChange} /> <br />
-        <input type="text" name="beltDegree" placeholder="Belt Degree" value={formData.beltDegree} onChange={handleChange} /> <br />
+  <div className="add-form-container">
+    <h2>Add Master</h2>
+    {message && <p>{message}</p>}
+    <form onSubmit={handleSubmit} encType="multipart/form-data">
+      <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required />
+      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+      <input type="text" name="number" placeholder="Contact Number" value={formData.number} onChange={handleChange} required />
+      <input type="text" name="beltColor" placeholder="Belt Color" value={formData.beltColor} onChange={handleChange} />
+      <input type="text" name="beltDegree" placeholder="Belt Degree" value={formData.beltDegree} onChange={handleChange} />
+      
+      <select name="assignedDojoId" value={formData.assignedDojoId} onChange={handleChange} required>
+        <option value="">Select a Dojo</option>
+        {dojos.map((dojo) => (
+          <option key={dojo._id} value={dojo._id}>
+            {dojo.address.place}
+          </option>
+        ))}
+      </select>
 
-        <select name="assignedDojoId" value={formData.assignedDojoId} onChange={handleChange} required>
-          <option value="">Select a Dojo</option>
-          {dojos.map((dojo) => (
-            <option key={dojo._id} value={dojo._id}>
-              {dojo.address.place}
-            </option>
-          ))}
-        </select> 
-        <br />
+      <input type="file" onChange={handleFileChange} accept="image/*" />
 
-        <input type="file" onChange={handleFileChange} accept="image/*" /> <br />
-
-        <button type="submit">Create Master</button>
-      </form>
-      <br />
-      <button onClick={() => navigate(`/admin-dashboard`)}>Back</button>
-    </div>
-  );
+      <button type="submit">Create Master</button>
+    </form>
+    <br />
+    <button onClick={() => navigate(`/admin-dashboard`)}>Back</button>
+  </div>
+);
 };
 
 export default AddMaster;

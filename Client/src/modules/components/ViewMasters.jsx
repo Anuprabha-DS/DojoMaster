@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './AdminDashboard.css';
+
 // import { apiRequest } from '../utils/tokenUtils';
 
 
@@ -64,40 +66,39 @@ const ViewMasters = () => {
     }
   }; 
 
+
+
   return (
-    <div>
-    <div>
+    <div className="container">
       <h2>Masters List</h2>
       {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {masters.length > 0 ? (
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+        <div className="flex-wrap">
           {masters.map((master) => (
-            <div key={master._id} style={{ border: "1px solid #ddd", padding: "15px", width: "250px", borderRadius: "10px" }}>
+            <div className="card" key={master._id}>
               <h4>{master.name}</h4>
               <p>Email: {master.email}</p>
               <p>Phone: {master.number}</p>
-              <p>Belt: {master.belt.color} </p>
+              <p>Belt: {master.belt?.color || 'N/A'}</p>
               {master.image ? (
-                <img src={master.image} alt={master.name} width="100" style={{ borderRadius: "5px" }} />
+                <img src={master.image} alt={master.name} />
               ) : (
                 <p>No Image Available</p>
               )}
-              <button onClick={() => navigate(`/admin/master/${master._id}`)}>View Details</button>
-              <button onClick={() => handleDelete(master._id)} style={{ marginLeft: "10px", backgroundColor: "red", color: "white" }}>Delete</button>
-
+              <button className="button" onClick={() => navigate(`/admin/master/${master._id}`)}>View Details</button>
+              <button className="button red" onClick={() => handleDelete(master._id)}>Delete</button>
             </div>
           ))}
         </div>
       ) : (
         !loading && <p>No masters available.</p>
       )}
+      <button className="button grey" onClick={() => navigate(`/admin-dashboard`)}>Back</button>
     </div>
-    <button onClick={() => navigate(`/admin-dashboard`)}>Back</button>
-
-    </div>
-
   );
 };
 
 export default ViewMasters;
+
+

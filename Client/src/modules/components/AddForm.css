@@ -1,0 +1,57 @@
+.add-form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+}
+
+.add-form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.add-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-form-container label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.add-form-container input,
+.add-form-container select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+}
+
+.add-form-container input[type="file"] {
+  padding: 0.3rem;
+}
+
+.add-form-container button {
+  padding: 0.7rem;
+  border: none;
+  background-color: #2c7ae7;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.add-form-container button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.add-form-container p {
+  color: red;
+  text-align: center;
+  margin-top: -0.5rem;
+}

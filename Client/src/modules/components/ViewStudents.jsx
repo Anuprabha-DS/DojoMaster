@@ -40,44 +40,31 @@ const ViewStudents = () => {
   if (message) return <p style={{ color: "red" }}>{message}</p>;
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Students List</h2>
-      <button onClick={() => navigate("/filter-students")}>Filter by Dojo</button>
+    <div className="container">
+  <h2>Students List</h2>
+  <button className="button" onClick={() => navigate("/filter-students")}>Filter by Dojo</button>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px", marginTop: "20px" }}>
-        {students.map((student) => (
-          <div
-            key={student._id}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "15px",
-              width: "250px",
-              textAlign: "center",
-              boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
-            }}
-          >
-            {student.image ? (
-                <img src={student.image} alt={student.name} width="100" style={{ borderRadius: "5px" }} />
-              ) : (
-                <p>No Image Available</p>
-              )}
-
-            <h3>{student.Name}</h3>
-            <p><strong>Age:</strong> {student.age}</p>
-            <p><strong>Phone :</strong> {student.contact.phone}</p>
-            <p><strong>Email :</strong> {student.contact.email}</p>
-            <p><strong>Dojo:</strong> {student.dojoName}</p>
-            <button onClick={() => navigate(`/student/${student._id}`)} style={{ marginTop: "10px" }}>
-              View Details
-            </button>
-          </div>
-        ))}
+  <div className="flex-wrap" style={{ marginTop: "20px" }}>
+    {students.map((student) => (
+      <div key={student._id} className="card" style={{ width: "250px" }}>
+        {student.image ? (
+          <img src={student.image} alt={student.name} />
+        ) : (
+          <p>No Image Available</p>
+        )}
+        <h4>{student.Name}</h4>
+        <p><strong>Age:</strong> {student.age}</p>
+        <p><strong>Phone:</strong> {student.contact.phone}</p>
+        <p><strong>Email:</strong> {student.contact.email}</p>
+        <p><strong>Dojo:</strong> {student.dojoName}</p>
+        <button className="button" onClick={() => navigate(`/student/${student._id}`)}>View Details</button>
       </div>
+    ))}
+  </div>
 
-      <br />
-      <button onClick={() => navigate("/admin-dashboard")}>Back</button>
-    </div>
+  <br />
+  <button className="button grey" onClick={() => navigate("/admin-dashboard")}>Back</button>
+</div>
   );
 };
 

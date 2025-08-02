@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './AdminDashboard.css';
+
 
 const DojoDetails = () => {
   const { id } = useParams(); // Get the dojo ID from the URL params
@@ -91,37 +93,30 @@ const DojoDetails = () => {
     }
   };
 
+
   return (
-    <div>
+    <div className="container">
       <h2>Dojo Details</h2>
-
-      {/* Show error if any */}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-
-      {/* Display dojo details if available */}
       {dojo ? (
-        <div>
+        <div className="card">
           <h3>{dojo.name}</h3>
-
           {isEditing ? (
             <>
-              <label>
-                <strong>Place:</strong> 
+              <div className="label-input">
+                <label>Place:</label>
                 <input type="text" name="place" value={updatedFields.place} onChange={handleChange} />
-              </label>
-              <br />
-              <label>
-                <strong>Phone:</strong> 
+              </div>
+              <div className="label-input">
+                <label>Phone:</label>
                 <input type="text" name="phone" value={updatedFields.phone} onChange={handleChange} />
-              </label>
-              <br />
-              <label>
-                <strong>Email:</strong> 
+              </div>
+              <div className="label-input">
+                <label>Email:</label>
                 <input type="email" name="email" value={updatedFields.email} onChange={handleChange} />
-              </label>
-              <br />
-              <button onClick={handleUpdate}>Save Changes</button>
-              <button onClick={() => setIsEditing(false)} style={{ marginLeft: '10px' }}>Cancel</button>
+              </div>
+              <button className="button" onClick={handleUpdate}>Save Changes</button>
+              <button className="button grey" onClick={() => setIsEditing(false)}>Cancel</button>
             </>
           ) : (
             <>
@@ -131,9 +126,8 @@ const DojoDetails = () => {
               <p><strong>Pincode:</strong> {dojo.address.pincode}</p>
               <p><strong>Contact:</strong> {dojo.contact.phone}</p>
               <p><strong>Email:</strong> {dojo.contact.email}</p>
-              
-              <button onClick={() => navigate('/admin-dashboard')}>Back to Dojos</button>
-              <button onClick={() => setIsEditing(true)} style={{ marginLeft: '10px', backgroundColor: 'blue', color: 'white' }}>Update Dojo</button>
+              <button className="button grey" onClick={() => navigate('/admin-dashboard')}>Back</button>
+              <button className="button" onClick={() => setIsEditing(true)}>Update Dojo</button>
             </>
           )}
         </div>
