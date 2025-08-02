@@ -20,7 +20,6 @@ import CreateStudent from "./modules/components/CreateStudent"
 import FetchNotifications from "./modules/components/FetchNotification"
 import StudentAttendance from "./modules/components/StudentAttendance"
 import AdminNotification from "./modules/components/AdminNotification"
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
