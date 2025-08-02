@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import './AddForm.css'; 
 
 const SendNotification = () => {
   const [title, setTitle] = useState("");
@@ -95,7 +96,7 @@ const SendNotification = () => {
   };
 
   return (
-    <div className="container">
+  <div className="add-form-container">
   <h2>Send Notification</h2>
   {error && <p style={{ color: "red" }}>{error}</p>}
   {success && <p style={{ color: "green" }}>{success}</p>}

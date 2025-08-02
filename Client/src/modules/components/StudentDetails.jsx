@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import './AdminDashboard.css';
 
 const StudentDetails = () => {
   const { id } = useParams();
@@ -42,7 +43,7 @@ const StudentDetails = () => {
 
 
 return (
-  <div>    
+  <div className="details-box">  
     <div style={{ padding: "20px", maxWidth: "600px", margin: "auto", border: "1px solid #ccc", borderRadius: "10px", boxShadow: "0 2px 5px rgba(0,0,0,0.1)" }}>
       <h2>Student Details</h2>
       <p><strong>Name:</strong> {student.Name}</p>

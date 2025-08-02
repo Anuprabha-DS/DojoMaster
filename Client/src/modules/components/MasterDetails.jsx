@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 // import { apiRequest } from '../utils/tokenUtils';
+import './AdminDashboard.css';
 
 
 const MasterDetails = () => {
@@ -40,7 +41,7 @@ const MasterDetails = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="details-box">
       <h2>Master Details</h2>
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
@@ -60,7 +61,7 @@ const MasterDetails = () => {
           ) : (
             <p>No Image Available</p>
           )}
-          <button onClick={() => navigate("/masters")}>Back to Masters</button>
+          <button className="button" onClick={() => navigate("/masters")}>Back to Masters</button>
         </div>
       ) : (
         !loading && <p>No master details available.</p>
