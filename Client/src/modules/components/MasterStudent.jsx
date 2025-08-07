@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import './MasterStudent.css';
 
 const MasterStudent = () => {
   const { id } = useParams();
@@ -117,7 +118,7 @@ const MasterStudent = () => {
   };
 
   return (
-    <div>
+    <div className="master-student-container">
       <h2>Student Details</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       {student ? (
@@ -128,12 +129,15 @@ const MasterStudent = () => {
           <p><strong>Height:</strong> {student.physicalInfo.height} cm</p>
           <p><strong>Weight:</strong> {student.physicalInfo.weight} kg</p>
 
+        <div className="section">
           <h3>Contact Information</h3>
           <p><strong>Parent Name:</strong> {student.contact?.parentName}</p>
           <p><strong>Phone Number:</strong> {student.contact?.phone}</p>
           <p><strong>Email:</strong> {student.contact?.email}</p>
           <p><strong>Address:</strong> {student.contact?.address}</p>
+        </div>
 
+        <div className="section">
           <h3>Belt Information</h3>
           <p><strong>Current Belt:</strong> {student.beltInfo?.currentBelt}</p>
           <p><strong>Belt History:</strong></p>
@@ -148,7 +152,9 @@ const MasterStudent = () => {
                 <p>No history available</p>
               )}
             </ul>
-      
+        </div>
+
+        <div className="section">
           <h3>Achievements</h3>
           {student.achievements.length > 0 ? (
             <ul>
@@ -164,8 +170,10 @@ const MasterStudent = () => {
           ) : (
             <p>No achievements recorded.</p>
           )}
+      </div>
 
 
+      <div className="buttons">
           <button onClick={() => setShowBeltForm(!showBeltForm)}>
             {showBeltForm ? "Cancel" : "Update Belt"}
           </button>
@@ -225,6 +233,7 @@ const MasterStudent = () => {
           )}
 
           <button onClick={() => navigate(`/master-dashboard`)}>Back</button>
+      </div>
         </div>
       ) : (
         <p>Loading student details...</p>

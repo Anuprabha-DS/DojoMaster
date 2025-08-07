@@ -32,7 +32,7 @@ const authController = {
                 });
             }
             
-            const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET,{ expiresIn: '1h' });
+            const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET,{ expiresIn: '24h' });
             // res.cookie('token', token, {httpOnly: true})
             // If user is a Master, fetch additional master details
             let additionalData = {};
@@ -55,83 +55,6 @@ const authController = {
         }
     },
 
-    // Register Master
-    // registerMaster: async (req, res) => {
-    //     try {
-    //         const { email, password } = req.body;
-    //         // Check if email exists in User collection
-    //         const existingUser = await User.findOne({ email, active:true });
-    //         if (existingUser) {
-    //             return res.status(400).json({ error: 'Email already registered in users' });
-    //         }
-
-    //         // Check if email exists in Master collection
-    //         const existingMaster = await Master.findOne({ email ,active:true});
-    //         if (!existingMaster) {
-    //             return res.status(400).json({ error: 'Not exist master' });
-    //         }
-
-    //         // Create user with Master role
-    //         const hashedPassword = await bcrypt.hash(password, 8);
-    //         const user = new User({
-    //             email,
-    //             password: hashedPassword,
-    //             role: 'Master'
-    //         });
-
-    //         try {
-    //             await user.save() 
-    //         } catch (error) {
-    //             return res.status(500).json({message: error.message})
-    //         }
-            
-    //         await user.save();
-
-    //         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    //         res.status(201).json({ user, token ,masterId : existingMaster._id});
-    //     } catch (error) {
-    //         res.status(400).json({ error: error.message });
-    //     }
-    // },
-
-    // // Register Parent
-    // registerParent: async (req, res) => {
-    //     try {
-    //         const { email, password } = req.body;
-
-    //         // Check if email exists in Student collection (parent's email)
-    //         const existingStudent = await Student.findOne({ 'contact.email': email });
-    //         if (!existingStudent) {
-    //             return res.status(400).json({ 
-    //                 error: 'Email not found in student records. Only parents of registered students can create an account.' 
-    //             });
-    //         }
-
-    //         // Check if email exists in User collection
-    //         const existingUser = await User.findOne({ email });
-    //         if (existingUser) {
-    //             return res.status(400).json({ error: 'Email already registered in users' });
-    //         }
-
-    //         // Create user with Parent role
-    //         const hashedPassword = await bcrypt.hash(password, 8);
-    //         const user = new User({
-    //             email,
-    //             password: hashedPassword,
-    //             role: 'Parent'
-    //         });
-    //         await user.save();
-
-    //         const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET);
-    //         res.status(201).json({ 
-    //             user, 
-    //             token,
-    //             studentId: existingStudent._id // Returning student ID for reference
-    //         });
-    //     } catch (error) {
-    //         res.status(400).json({ error: error.message });
-    //     }
-    // },
 
 
     register: async (req, res) => {
@@ -233,7 +156,7 @@ const authController = {
             await user.save();
 
             // Generate new token
-            const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
             // res.cookie('token', token, { httpOnly: true });
 
             res.json({ 

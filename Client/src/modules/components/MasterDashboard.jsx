@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import './MasterDashboard.css';
+
 
 const MasterDashboard = () => {
   const navigate = useNavigate();
@@ -44,27 +46,6 @@ const MasterDashboard = () => {
     navigate("/");
   };
 
-  // const handleMarkAttendance = async (id) => {
-  //   try {
-  //     const response = await fetch(`${import.meta.env.VITE_BASE_URL}/master/StudAttendance`, {
-  //       method: "POST",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ studId: id }),
-  //     });
-  //     const data = await response.json();
-  //     if (response.ok) {
-  //       alert(data.message);
-  //     } else {
-  //       setError(data.message || "Failed to mark attendance.");
-  //     }
-  //   } catch (err) {
-  //     setError("Error marking attendance.");
-  //     console.error(err);
-  //   }
-  // };
 
   const handleMarkAttendance = async (id) => {
     try {
@@ -115,11 +96,10 @@ const MasterDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="dashboard-container">
       <h2>Master Dashboard</h2>
 
-      {/* Navigation Buttons */}
-      <div>
+      <div className="top-buttons">
         <button onClick={() => navigate("/add-students")}>Add Students</button>
         <button onClick={() => navigate("/student-attendance")}>Student Attendance</button>
         <button onClick={() => navigate("/master-notifications")}>View Notifications</button>
@@ -129,13 +109,12 @@ const MasterDashboard = () => {
       <div>
         
         <h3>Students</h3>
-        {loading && <p>Loading...</p>}
-
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {loading && <p className="loading-message">Loading...</p>}
+        {error && <p className="error-message">{error}</p>}
         {students.length > 0 ? (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "16px" }}>
-            {students.map((student) => (
-              <div key={student._id} style={{ border: "1px solid #ccc", padding: "16px", borderRadius: "8px" }}>
+          <div className="student-grid">
+        {students.map(student => (
+          <div className="student-card" key={student._id}>
                 <h4>{student.Name}</h4>
                 <p>Age: {student.age} years</p>
                 <p>Phone: {student.contact.phone} </p>
@@ -147,16 +126,16 @@ const MasterDashboard = () => {
                 ) : (
                   <p>No Image Available</p>
                 )}
-                <button onClick={() => navigate(`/MasterStudent/${student._id}`)} style={{ marginTop: "10px" }}>
+              <button className="view-btn" onClick={() => navigate(`/MasterStudent/${student._id}`)} style={{ marginTop: "10px" }}>
                 View Details
               </button>
 
-              <button onClick={() => handleDelete(student._id)} style={{ marginTop: "10px", marginLeft: "10px", backgroundColor: "red", color: "white" }}>
+              <button className="delete-btn" onClick={() => handleDelete(student._id)} style={{ marginTop: "10px", marginLeft: "10px", backgroundColor: "red", color: "white" }}>
                   Delete
                 </button>
 
                 {/* <button onClick={() => handleMarkAttendance(student._id)} style={{ marginLeft: "10px", backgroundColor: "green", color: "white" }}>Mark Attendance</button> */}
-                <button
+                <button className="attendance-btn"
                   onClick={() => handleMarkAttendance(student._id)}
                   style={{
                     marginLeft: "10px",
@@ -173,15 +152,13 @@ const MasterDashboard = () => {
             
           </div>
         ) : (
-          !loading && <p>No students found.</p>
+          !loading && <p className="error-message">No students found.</p>
         )}
       </div>
 
       {/* Account Actions */}
-      <div>
-        <button type="button" onClick={() => navigate("/change-password")}>
-          Change Password
-        </button>
+      <div className="footer-buttons">
+        <button onClick={() => navigate("/change-password")}>Change Password</button>
         <button onClick={handleLogout}>Logout</button>
       </div>
     </div>

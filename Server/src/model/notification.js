@@ -17,7 +17,7 @@ const notificationSchema = new Schema({
   type: {
     type: String,
     required: true,
-    enum: ['belt-test', 'tournament', 'general', 'fees'],
+    enum: ['Belt Test', 'Tournament', 'General', 'Fees'],
     default: 'general'
   },
   dojoId: {

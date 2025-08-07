@@ -1,0 +1,142 @@
+.dashboard-container {
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2, h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Top navigation buttons */
+.top-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.top-buttons button {
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.top-buttons button:hover {
+  background-color: #0056b3;
+}
+
+/* Student Grid */
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.student-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.student-card h4 {
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.student-card p {
+  margin: 4px 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.student-card img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 6px;
+  margin-top: 0.5rem;
+}
+
+/* Buttons in card */
+.student-card button {
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.student-card .view-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.student-card .view-btn:hover {
+  background-color: #218838;
+}
+
+.student-card .delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.student-card .delete-btn:hover {
+  background-color: #c82333;
+}
+
+.student-card .attendance-btn {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.student-card .attendance-btn:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Footer Buttons */
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.footer-buttons button {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: #6c757d;
+  color: white;
+}
+
+.footer-buttons button:hover {
+  background-color: #5a6268;
+}
+
+/* Error or Loading */
+.error-message {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.loading-message {
+  text-align: center;
+  margin-top: 1rem;
+}
