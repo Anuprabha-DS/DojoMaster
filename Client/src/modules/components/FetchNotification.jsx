@@ -51,7 +51,7 @@ const FetchNotifications = () => {
                         <li key={notification._id}>
                             <strong>{notification.title}</strong> - {notification.message}
                             <br />
-                            <small>{new Date(notification.createdAt).toLocaleString()}</small>
+                            <small>{notification.type}</small>
                         </li>
                     ))}
                 </ul>

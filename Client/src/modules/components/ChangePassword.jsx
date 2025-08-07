@@ -74,10 +74,10 @@ const ChangePassword = () => {
   
   
   return (
-    <div>
+    <div className="container">
       <h2>Change Password</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="label-input">
           <label>Current Password:</label>
           <input
             type="password"
@@ -85,7 +85,7 @@ const ChangePassword = () => {
             onChange={(e) => setCurrentPassword(e.target.value)}
           />
         </div>
-        <div>
+        <div className="label-input">
           <label>New Password:</label>
           <input
             type="password"
@@ -93,7 +93,7 @@ const ChangePassword = () => {
             onChange={(e) => setNewPassword(e.target.value)}
           />
         </div>
-        <div>
+        <div className="label-input">
           <label>Confirm Password:</label>
           <input
             type="password"
@@ -101,10 +101,13 @@ const ChangePassword = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
-        
-        {error && <div style={{ color: 'red' }}>{error}</div>}
-        {success && <div style={{ color: 'green' }}>{success}</div>}
-        <button type="submit" disabled={isLoading}>{isLoading ? 'Updating...' : 'Change Password'}</button>
+
+        {error && <div className="error-message">{error}</div>}
+        {success && <div className="success-message">{success}</div>}
+
+        <button type="submit" className="button" disabled={isLoading}>
+          {isLoading ? 'Updating...' : 'Change Password'}
+        </button>
       </form>
     </div>
   );

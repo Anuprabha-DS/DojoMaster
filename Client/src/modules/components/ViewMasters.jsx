@@ -80,6 +80,8 @@ const ViewMasters = () => {
               <h4>{master.name}</h4>
               <p>Email: {master.email}</p>
               <p>Phone: {master.number}</p>
+              <p>Assigned Dojo Name: {master.assignedDojoId.name}</p>
+
               <p>Belt: {master.belt?.color || 'N/A'}</p>
               {master.image ? (
                 <img src={master.image} alt={master.name} />
