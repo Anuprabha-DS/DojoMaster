@@ -115,39 +115,70 @@ const MasterDashboard = () => {
           <div className="student-grid">
         {students.map(student => (
           <div className="student-card" key={student._id}>
-                <h4>{student.Name}</h4>
-                <p>Age: {student.age} years</p>
-                <p>Phone: {student.contact.phone} </p>
-                <p>Email: {student.contact.email} </p>
-                <p>Belt: {student.beltInfo.currentBelt}</p>
+  <div className="student-image">
+    {student.image ? (
+      <img src={student.image} alt={student.Name} />
+    ) : (
+      <p className="no-image">No Image Available</p>
+    )}
+  </div>
+        <div className="student-info">
+          <h4>{student.Name}</h4>
+          <p><strong>Age:</strong> {student.age} years</p>
+          <p><strong>Phone:</strong> {student.contact.phone}</p>
+          <p><strong>Email:</strong> {student.contact.email}</p>
+          <p><strong>Belt:</strong> {student.beltInfo.currentBelt}</p>
 
-                {student.image ? (
-                  <img src={student.image} alt={student.Name} width="150" style={{ borderRadius: "5px" }} />
-                ) : (
-                  <p>No Image Available</p>
-                )}
-              <button className="view-btn" onClick={() => navigate(`/MasterStudent/${student._id}`)} style={{ marginTop: "10px" }}>
-                View Details
-              </button>
+          <div className="action-buttons">
+            <button className="view-btn" onClick={() => navigate(`/MasterStudent/${student._id}`)}>View Details</button>
 
-              <button className="delete-btn" onClick={() => handleDelete(student._id)} style={{ marginTop: "10px", marginLeft: "10px", backgroundColor: "red", color: "white" }}>
-                  Delete
-                </button>
+            <button className="delete-btn" onClick={() => handleDelete(student._id)}>Delete</button>
 
-                {/* <button onClick={() => handleMarkAttendance(student._id)} style={{ marginLeft: "10px", backgroundColor: "green", color: "white" }}>Mark Attendance</button> */}
-                <button className="attendance-btn"
-                  onClick={() => handleMarkAttendance(student._id)}
-                  style={{
-                    marginLeft: "10px",
-                    backgroundColor: markedAttendance[student._id] ? "gray" : "green",
-                    color: "white",
-                    cursor: markedAttendance[student._id] ? "not-allowed" : "pointer",
-                  }}
-                  disabled={markedAttendance[student._id]}
-                >
-                  {markedAttendance[student._id] ? "Marked" : "Mark Attendance"}
-                </button>
-              </div>
+            <button
+              className="attendance-btn"
+              onClick={() => handleMarkAttendance(student._id)}
+              disabled={markedAttendance[student._id]}
+            >
+              {markedAttendance[student._id] ? "Marked" : "Mark Attendance"}
+            </button>
+          </div>
+        </div>
+      </div>
+
+          // <div className="student-card" key={student._id}>
+          //       <h4>{student.Name}</h4>
+          //       <p>Age: {student.age} years</p>
+          //       <p>Phone: {student.contact.phone} </p>
+          //       <p>Email: {student.contact.email} </p>
+          //       <p>Belt: {student.beltInfo.currentBelt}</p>
+
+          //       {student.image ? (
+          //         <img src={student.image} alt={student.Name} width="150" style={{ borderRadius: "5px" }} />
+          //       ) : (
+          //         <p>No Image Available</p>
+          //       )}
+          //     <button className="view-btn" onClick={() => navigate(`/MasterStudent/${student._id}`)} style={{ marginTop: "10px" }}>
+          //       View Details
+          //     </button>
+
+          //     <button className="delete-btn" onClick={() => handleDelete(student._id)} style={{ marginTop: "10px", marginLeft: "10px", backgroundColor: "red", color: "white" }}>
+          //         Delete
+          //       </button>
+
+          //       {/* <button onClick={() => handleMarkAttendance(student._id)} style={{ marginLeft: "10px", backgroundColor: "green", color: "white" }}>Mark Attendance</button> */}
+          //       <button className="attendance-btn"
+          //         onClick={() => handleMarkAttendance(student._id)}
+          //         style={{
+          //           marginLeft: "10px",
+          //           backgroundColor: markedAttendance[student._id] ? "gray" : "green",
+          //           color: "white",
+          //           cursor: markedAttendance[student._id] ? "not-allowed" : "pointer",
+          //         }}
+          //         disabled={markedAttendance[student._id]}
+          //       >
+          //         {markedAttendance[student._id] ? "Marked" : "Mark Attendance"}
+          //       </button>
+          //     </div>
             ))}
             
           </div>
