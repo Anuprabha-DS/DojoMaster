@@ -41,14 +41,14 @@ const FetchNotifications = () => {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div>
+        <div className="container">
             <h2>Notifications</h2>
             {notifications.length === 0 ? (
                 <p>No notifications available</p>
             ) : (
-                <ul>
+                <ul className="flex-wrap">
                     {notifications.map((notification) => (
-                        <li key={notification._id}>
+                        <li key={notification._id} className="card">
                             <strong>{notification.title}</strong> - {notification.message}
                             <br />
                             <small>{notification.type}</small>
@@ -56,7 +56,7 @@ const FetchNotifications = () => {
                     ))}
                 </ul>
             )}
-    <button type="button" onClick={()=>navigate('/master-dashboard')}>Back</button>
+    <button className="button grey" onClick={()=>navigate('/master-dashboard')}>Back</button>
         </div>
     );
 };

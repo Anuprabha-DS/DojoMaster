@@ -116,10 +116,10 @@ const SendNotification = () => {
       <label>Type:</label>
       <select value={type} onChange={(e) => setType(e.target.value)} required>
         <option value="">Select one</option>
-        <option value="belt-test">Belt Test</option>
-        <option value="tournament">Tournament</option>
-        <option value="general">General</option>
-        <option value="fees">Fees</option>
+        <option value="Belt Test">Belt Test</option>
+        <option value="Tournament">Tournament</option>
+        <option value="General">General</option>
+        <option value="Fees">Fees</option>
       </select>
     </div>
 

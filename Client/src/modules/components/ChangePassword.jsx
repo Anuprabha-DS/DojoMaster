@@ -73,42 +73,54 @@ const ChangePassword = () => {
   };
   
   
-  return (
-    <div className="container">
-      <h2>Change Password</h2>
+return (
+    <div className="container mt-5" style={{ maxWidth: "500px" }}>
+      <h2 className="mb-4 text-center">Change Password</h2>
       <form onSubmit={handleSubmit}>
-        <div className="label-input">
-          <label>Current Password:</label>
+        <div className="mb-3">
+          <label className="form-label">Current Password</label>
           <input
             type="password"
+            className="form-control"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
+            required
           />
         </div>
-        <div className="label-input">
-          <label>New Password:</label>
+
+        <div className="mb-3">
+          <label className="form-label">New Password</label>
           <input
             type="password"
+            className="form-control"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
+            required
           />
         </div>
-        <div className="label-input">
-          <label>Confirm Password:</label>
+
+        <div className="mb-3">
+          <label className="form-label">Confirm Password</label>
           <input
             type="password"
+            className="form-control"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            required
           />
         </div>
 
-        {error && <div className="error-message">{error}</div>}
-        {success && <div className="success-message">{success}</div>}
+        {error && <div className="alert alert-danger">{error}</div>}
+        {success && <div className="alert alert-success">{success}</div>}
 
-        <button type="submit" className="button" disabled={isLoading}>
-          {isLoading ? 'Updating...' : 'Change Password'}
+        <button type="submit" className="btn btn-primary w-100 mb-3" disabled={isLoading}>
+          {isLoading ? "Updating..." : "Change Password"}
         </button>
       </form>
+
+      <button className="btn btn-secondary w-100" onClick={() => navigate("/")}>
+        Back to Login
+      </button>
     </div>
   );
 };
